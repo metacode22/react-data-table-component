@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from '@emotion/styled';
 
-function App() {
+import DataTable from './components/DataTable';
+
+import dummyColumns from './data/dummyColumns';
+import dummyData from './data/dummyData';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <h1>header, fixedColumnKeys, searchable, pagination</h1>
+      <DataTable
+        header="Header"
+        fixedColumnKeys
+        scrollHeight="300px"
+        width="700px"
+        searchable
+        initialData={dummyData}
+        columns={dummyColumns}
+        pagination
+      />
+
+      <h1>header, pagination</h1>
+      <DataTable
+        header="Header"
+        initialData={dummyData}
+        columns={dummyColumns}
+        pagination
+      />
+
+      <h1>searchable, pagination</h1>
+      <DataTable
+        searchable
+        initialData={dummyData}
+        columns={dummyColumns}
+        pagination
+      />
+
+      <h1>searchable</h1>
+      <DataTable searchable initialData={dummyData} columns={dummyColumns} />
+    </Container>
   );
-}
+};
 
 export default App;
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+`;
