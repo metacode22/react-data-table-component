@@ -7,7 +7,7 @@ export interface Columns {
 const dummyColumns: Columns[] = [
   {
     name: 'name',
-    sortable: false,
+    sortable: true,
   },
   {
     name: 'calories',
